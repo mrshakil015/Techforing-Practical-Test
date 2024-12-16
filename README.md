@@ -103,11 +103,11 @@ URL: `/api/redoc/`
 - **Request Body:**
     ```json
     {
-    "username": "string",
-    "email": "user@example.com",
-    "password": "string",
-    "first_name": "string",
-    "last_name": "string"
+    "username": "shakil1",
+    "email": "shakil1@gmail.com",
+    "password":"123",
+    "first_name": "Md",
+    "last_name": "Shakil"
     }
     ```
 - **Response Example:**
@@ -115,11 +115,10 @@ URL: `/api/redoc/`
     {
         "user": {
             "id": 1,
-            "username": "username",
-            "email": "user@example.com",
-            "password": "userpassword",
-            "first_name": "user_firstname",
-            "last_name": "user_lastname",
+            "username": "shakil1",
+            "email": "shakil1@gmail.com",
+            "first_name": "Md",
+            "last_name": "Shakil"
         },
         "message": "User registered successfully",
         "refresh": "jwt_refresh_token",
@@ -133,17 +132,19 @@ URL: `/api/redoc/`
 - **Request Body:**
     ```json
     {
-    "username": "string",
-    "password": "string"
+    "username": "shakil1",
+    "password": "1234"
     }
     ```
 - **Response Example:**
     ```json
     {
-       "user": {
-        "id": 1,
-        "username": "username",
-        "password": "userpassword"
+        "user": {
+            "id": 1,
+            "username": "shakil1",
+            "email": "shakil1@gmail.com",
+            "first_name": "Md",
+            "last_name": "Shakil"
         },
         "refresh": "jwt_refresh_token",
         "access": "jwt_access_token"
