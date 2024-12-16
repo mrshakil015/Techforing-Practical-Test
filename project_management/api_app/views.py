@@ -8,8 +8,6 @@ from .models import *
 from .serializers import *
 from rest_framework import viewsets, permissions
 
-
-
 class UserViewSet(viewsets.ModelViewSet):
     queryset = Users.objects.all()
     serializer_class = UserSerializer

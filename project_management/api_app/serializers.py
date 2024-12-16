@@ -23,14 +23,14 @@ class UserLoginSerializer(serializers.Serializer):
 class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Projects
-        exclude = ['Created_at']
+        fields = '__all__'
 
 class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tasks
-        exclude = ['Created_at']
+        fields = '__all__'
         
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comments
-        exclude = ['Created_at']
+        fields = '__all__'

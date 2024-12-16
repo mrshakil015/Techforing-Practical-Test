@@ -27,10 +27,10 @@ router.register(r'comments',views.CommentsViewset,basename='comment')
 
 urlpatterns = [
     path('',include(router.urls)),
-    path('projects/<int:project_id>/tasks/',views.TasksViewset.as_view({'get':'list','post':'create'}), name='project-tasks'),
-    path('tasks/<int:project_id>/comments/',views.CommentsViewset.as_view({'get':'list','post':'create'}), name='task-comments'),
     path('users/register/', views.UserViewSet.as_view({'post': 'register'}), name='user-register'),
     path('users/login/', views.UserViewSet.as_view({'post': 'login'}), name='user-login'),
+    path('projects/<int:project_id>/tasks/',views.TasksViewset.as_view({'get':'list','post':'create'}), name='project-tasks'),
+    path('tasks/<int:project_id>/comments/',views.CommentsViewset.as_view({'get':'list','post':'create'}), name='task-comments'),
     path('docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='redoc'),
 ]
