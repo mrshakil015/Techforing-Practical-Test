@@ -1,5 +1,14 @@
 # Django Project Management API
 
+## Context
+- [Project Setup](#project-setup)
+- [API Documentation](#api-documentation)
+    - [Users](#users)
+    - [Projects](#projects)
+    - [Tasks](#tasks)
+    - [Comments](#comments)
+- [Create Documentation Using Swagger](#create-documentation-using-swagger)
+
 ## Implementation
 ### Project Setup
 1. At first Create Environment:
@@ -36,7 +45,7 @@
     ]
     ```
 
-
+⬆️ [Go to Context](#context)
 ### Folder Stracture
 ```cmd
 Main-Folder/
@@ -71,8 +80,18 @@ Main-Folder/
     ```cmd
     py manage.py createsuperuser
     ```
+⬆️ [Go to Context](#context)
 
-## API Documentation
+# API Documentation
+To View Swagger Documentation:
+```cmd
+URL: `/api/docs/`
+```
+To View Redoc API Documentation:
+```cmd
+URL: `/api/redoc/`
+```
+## Users
 ### 1. User Register:
 - Register a new user.
 - URL: `/users/register/`
@@ -136,6 +155,8 @@ Main-Folder/
 - URL: `/users/{user_id}/`
 - Method: `DELETE`
 
+⬆️ [Go to Context](#context)
+## Projects 
 ### 5. List Projects:
 - Retrieves all projects.
 - URL: `/projects/`
@@ -182,16 +203,18 @@ Main-Folder/
     }
     ```
 
-### 7. Update Project
+### 7. Update Project:
 - Updates the details of an existing project.
 - URL: `/projects/{project_id}/`
 - Method: `PUT` or `PATCH`
 
-### 8. Delete Project
+### 8. Delete Project:
 - Deletes an existing project.
 - URL: `/projects/{project_id}/`
 - Method: `DELETE`
 
+⬆️ [Go to Context](#context)
+## Tasks
 ### 9. List Tasks for a Project:
 - Retrieves tasks associated with a specific project.
 - URL: `/projects/{project_id}/tasks/`
@@ -254,16 +277,18 @@ Main-Folder/
         "Project": 2
     }
     ```
-### 11. Update Task
+### 11. Update Task:
 - Updates the details of an existing task.
 - URL: `/tasks/{task_id}/`
 - Method: `PUT` or `PATCH`
 
-### 12. Delete Task
+### 12. Delete Task:
 - Deletes an existing task.
 - URL: `/tasks/{task_id}/`
 - Method: `DELETE`
 
+⬆️ [Go to Context](#context)
+## Comments
 ### 13. List Comments for a Task:
 - Retrieves comments associated with a specific task.
 - URL: `/tasks/{task_id}/comments/`
@@ -309,12 +334,56 @@ Main-Folder/
         "Task": 2
     }
     ```
-### 15. Update Comment
+### 15. Update Comment:
 - Updates the content of an existing comment.
 - URL: `/comments/{comment_id}/`
 - Method: `PUT` or `PATCH`
 
-### 16. Delete Comment
+### 16. Delete Comment:
 - Deletes an existing comment.
 - URL: `/comments/{comment_id}/`
 - Method: `DELETE`
+
+⬆️ [Go to Context](#context)
+
+## Create Documentation Using Swagger
+Using Swagger in Django can simplify the process of documenting APIs and provide an intuitive interface to test them.
+
+### 1. Install Required Libraries
+```cmd
+pip install drf-yasg
+```
+
+### 2. Configure Swagger in Django
+```cmd
+INSTALLED_APPS = [
+    ...
+    'drf_yasg',
+]
+```
+
+### 3. Configure Swagger URLS: In `urls.py`
+```python
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+from rest_framework.permissions import AllowAny
+
+schema_view = get_schema_view(
+    openapi.Info(
+        title="Project Management API",
+        default_version="v1",
+        description="API documentation for the Project Management Tool",
+    ),
+    public=True,
+    permission_classes=(AllowAny),
+)
+
+urlpatterns = [
+    ....
+    ....
+    path('docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='redoc'),
+]
+```
+
+⬆️ [Go to Context](#context)
