@@ -21,10 +21,12 @@ router = DefaultRouter()
 router.register(r'users',views.UsersViewset,basename='user')
 router.register(r'projects',views.ProjectsViewset,basename='project')
 router.register(r'tasks',views.TasksViewset,basename='task')
+router.register(r'comments',views.CommentsViewset,basename='comment')
 
 urlpatterns = [
     path('',include(router.urls)),
     path('projects/<int:project_id>/tasks/',views.TasksViewset.as_view({'get':'list','post':'create'}), name='project-tasks'),
+    path('tasks/<int:project_id>/comments/',views.CommentsViewset.as_view({'get':'list','post':'create'}), name='task-comments'),
     path('docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ]
 
