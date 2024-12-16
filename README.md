@@ -2,6 +2,7 @@
 
 ## Context
 - [Project Setup](#project-setup)
+- [Configure JWT Token](#configure-jwt-token)
 - [API Documentation](#api-documentation)
     - [Users](#users)
     - [Projects](#projects)
@@ -69,6 +70,33 @@ Main-Folder/
     ├── .gitignore
     └── manage.py
 ```
+## Configure JWT Token
+- Install Required Libraries
+    ```cmd
+    pip install djangorestframework-simplejwt
+    ```
+- Update `settings.py` to Add `rest_framework_simplejwt` inside the `INSTALLED_APPS`:
+  ```python
+    INSTALLED_APPS = [
+    ......
+    ......
+    'rest_framework',
+    'rest_framework_simplejwt',
+    ]
+    ```
+- Set the authentication classes to use JWT authentication:
+    ```python
+    REST_FRAMEWORK = {
+        'DEFAULT_AUTHENTICATION_CLASSES': [
+            'rest_framework_simplejwt.authentication.JWTAuthentication',
+            'rest_framework.authentication.SessionAuthentication',
+            'rest_framework.authentication.BasicAuthentication',
+        ],
+        'DEFAULT_PERMISSION_CLASSES': [
+            'rest_framework.permissions.IsAuthenticated',
+        ],
+    }
+    ```
 
 ### Final Setup
 - After Implement the Model Migrate the database:
@@ -350,6 +378,7 @@ URL: `/api/redoc/`
 - Method: `DELETE`
 
 ⬆️ [Go to Context](#context)
+
 
 ## Create Documentation Using Swagger
 Using Swagger in Django can simplify the process of documenting APIs and provide an intuitive interface to test them.
