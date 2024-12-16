@@ -80,6 +80,10 @@ Main-Folder/
     ```cmd
     py manage.py createsuperuser
     ```
+- Run the project
+    ```cmd
+    py manage.py runserver
+    ```
 ⬆️ [Go to Context](#context)
 
 # API Documentation
